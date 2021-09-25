@@ -39,6 +39,7 @@ var (
 	noteTag          = []byte("note")
 	tipTag           = []byte("tip")
 	warningTag       = []byte("warning")
+	pumlTag          = []byte("plantuml")
 	imageTag         = []byte("!")
 	strongTag        = []byte("*")
 	strikethroughTag = []byte("-")
@@ -162,6 +163,8 @@ func (r *Renderer) RenderNode(w io.Writer, node *bf.Node, entering bool) bf.Walk
 					r.out(w, noteTag)
 				case "warning":
 					r.out(w, warningTag)
+				case "plantuml":
+					r.out(w, pumlTag)
 				default:
 					r.out(w, []byte(codeTag))
 					r.out(w, []byte(":"))
@@ -180,6 +183,8 @@ func (r *Renderer) RenderNode(w io.Writer, node *bf.Node, entering bool) bf.Walk
 					r.out(w, noteTag)
 				case "warning":
 					r.out(w, warningTag)
+				case "plantuml":
+					r.out(w, pumlTag)
 				default:
 					r.out(w, []byte(codeTag))
 				}
